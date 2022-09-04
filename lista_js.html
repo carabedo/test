@@ -1,0 +1,51 @@
+<body>
+
+    <h1> Ejemplo de pagina en HTML</h1>
+
+    <h2> Esto es un subtitulo</h2>
+    
+    <button onclick="getItems()">Click me</button>
+
+    <ul>
+    </ul>
+
+
+
+<script>
+
+function getItems(){    
+var requestOptions = {
+  method: 'GET',
+  redirect: 'follow'
+};
+
+fetch("https://7pyngmccwa.execute-api.us-east-1.amazonaws.com/default/apitest?q=chocolate&n=5", requestOptions)
+  .then(response => response.json())
+  .then(result => renderlist(result[0]))
+  .catch(error => console.log('error', error));
+
+}
+
+function renderlist(arrayItems){
+for (x of arrayItems) {
+    console.log(x)
+    document.querySelector('ul').innerHTML += '<li>' + x.name +' <br> precio: ' + x.price + '$ </li>';
+}
+
+}
+
+</script>    
+</body>
+<style>
+    body {
+        width: 70%;
+        margin: 100px auto;
+        background-color: bisque;
+    }
+
+    h2 {
+    color: blueviolet;
+    }
+</style>
+
+
