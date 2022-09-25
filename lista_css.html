@@ -4,21 +4,26 @@
 
     <h2> Esto es un subtitulo</h2>
     
-    <div class='comidas'>
-    <ol>
+    <div class="container">
+    <div class="row comidas">
+
+    <ul>
+        <h3>Comidas</h3>
         <li> Pan Lactal</li>
         <li> Jamon</li>
         <li> Queso</li>
     </ol>
     </div>
     
-    <div class='bebidas'>
-    <ol>
+    <div class="row bebidas">
+    <ul>
+        <h3>Bebidas</h3>
         <li> Soda</li>
         <li> Vino</li>
     </ol>
     </div>
-    
+    </div>
+
 </body>
 <style>
     body {
@@ -31,11 +36,22 @@
     color: blueviolet;
     }
     
+    .container {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+    }
+
+    .row {
+        width: 50%;
+    }
     .comidas {
-        background-color: white;
+        background-color: beige;
     }
     
-    
+    .bebidas {
+        background-color: cadetblue;
+    }
 </style>
 
 
