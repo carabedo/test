@@ -1,10 +1,16 @@
 <body>
 
-    <h1> Ejemplo de pagina en HTML</h1>
+    <h1> Ejemplo de pagina en HTML con Javascript</h1>
 
-    <h2> Esto es un subtitulo</h2>
+    <h2> Ingrese el nombre de un articulo que desee conocer su precio.</h2>
     
-    <button onclick="getItems()">Click me</button>
+    <form action="">
+      <label for="query">Busqueda: </label>
+      <input type="text" name="query" class='q' id="q">
+
+    </form>
+
+    <button onclick="getItems()">Buscar</button>
 
     <ul>
     </ul>
@@ -19,10 +25,25 @@ var requestOptions = {
   redirect: 'follow'
 };
 
-fetch("https://7pyngmccwa.execute-api.us-east-1.amazonaws.com/default/apitest?q=chocolate&n=5", requestOptions)
+try {
+  let q = document.querySelector("input.q")
+    let url = "https://7pyngmccwa.execute-api.us-east-1.amazonaws.com/default/apitest?q="+q.value
+  
+  document.querySelector('ul').innerHTML=''
+  fetch(url, requestOptions)
   .then(response => response.json())
   .then(result => renderlist(result))
   .catch(error => console.log('error', error));
+    
+} catch (error) {
+  
+ alert(error)
+
+}
+
+
+
+
 
 }
 
@@ -44,7 +65,7 @@ for (x of arrayItems) {
     }
 
     h2 {
-    color: blueviolet;
+    color: rgb(249, 41, 27);
     }
 </style>
 
