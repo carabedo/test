@@ -21,7 +21,7 @@ var requestOptions = {
 
 fetch("https://7pyngmccwa.execute-api.us-east-1.amazonaws.com/default/apitest?q=chocolate&n=5", requestOptions)
   .then(response => response.json())
-  .then(result => renderlist(result[0]))
+  .then(result => renderlist(result))
   .catch(error => console.log('error', error));
 
 }
