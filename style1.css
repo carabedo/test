@@ -48,3 +48,7 @@ font-size: 120%;
 .header, .footer {
 background-color: #999;
 }
+
+.fondorojo {
+ background-color: darkred;
+}
