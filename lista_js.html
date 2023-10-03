@@ -44,7 +44,7 @@ function renderlist(notarrayItems){
 const arrayItems = Object.entries(notarrayItems);
 for (y of arrayItems) {
     x=y['1']
-    document.querySelector('ul').innerHTML += '<li>' + x.name +' <br> precio: ' + x.price + '$ </li>';
+    document.querySelector('ul').innerHTML += '<li>' + x.name +' <br> precio: ' + x.price + ' <br> super: ' + x.super +'$ </li>';
 }
 
 }
