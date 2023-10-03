@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>HTML Table Generator</title> 
+	<style>
+		table {
+			border:1px solid #b3adad;
+			border-collapse:collapse;
+			padding:5px;
+		}
+		table th {
+			border:1px solid #b3adad;
+			padding:5px;
+			background: #f0f0f0;
+			color: #313030;
+		}
+		table td {
+			border:1px solid #b3adad;
+			text-align:center;
+			padding:5px;
+			background: #ffffff;
+			color: #313030;
+		}
+	</style>
+</head>
+<body>
+
+
+    <h1> Ejemplo de pagina en HTML con Javascript</h1>
+
+    <h2> Ingrese el nombre de un articulo que desee conocer su precio.</h2>
+    
+    <form action="">
+      <label for="query">Busqueda: </label>
+      <input type="text" name="query" class='q' id="q">
+
+    </form>
+
+    <button onclick="getItems()">Buscar</button>
+
+    <ul>
+    </ul>
+
+	<table>
+		<thead>
+			<tr>
+				<th>Articulo</th>
+				<th>Precio</th>
+				<th>Supermercado</th>
+			</tr>
+		</thead>
+		<tbody>
+		</tbody>
+	</table>
+
+    <script>
+
+        function getItems(){    
+        var requestOptions = {
+          method: 'GET',
+          redirect: 'follow'
+        };
+        
+        try {
+          let q = document.querySelector("input.q")
+            let url = "https://7pyngmccwa.execute-api.us-east-1.amazonaws.com/default/apitest?q="+q.value
+          
+          document.querySelector('ul').innerHTML=''
+          fetch(url, requestOptions)
+          .then(response => response.json())
+          .then(result => renderlist(result))
+          .catch(error => console.log('error', error));
+            
+        } catch (error) {
+          
+         alert(error)
+        
+        }
+        }
+        
+        function renderlist(notarrayItems){
+        tabla=document.querySelector('tbody')
+        const arrayItems = Object.entries(notarrayItems);
+        for (y of arrayItems) {
+            x=y['1']
+            let row = document.createElement("tr")
+            row.innerHTML += '<td>' + x.name +' </td> <td>' + x.price +' </td> <td>' +x.super
+            tabla.append(row)
+            
+        }
+        
+        }
+        
+        </script>    
+</body>
+</html>
